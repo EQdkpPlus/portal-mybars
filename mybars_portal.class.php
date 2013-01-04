@@ -107,14 +107,22 @@ class mybars_portal extends portal_generic {
 		if($this->config('pk_mybars_headtext')){
 			$this->header = sanitize($this->config('pk_mybars_headtext'));
 		}
+		$maxbars = ($this->config('pk_mybars_bars')) ? $this->config('pk_mybars_bars') : 1;
+		if($maxbars > 1) {
+			$out = '';
+			for($i=1;$i<=$maxbars;$i++) {
+				$out .= $this->bar_out($i);
+			}
+			return $out;
+		}
 		return $this->bar_out();
 	}
 
-	public function bar_out() {
-		$value = (int) $this->config('pk_mybars_current');
-		$max = (int) $this->config('pk_mybars_max');
-		$text = (string) $this->config('pk_mybars_title');
-		$tooltip = $this->config('pk_mybars_tooltip');
+	public function bar_out($num=1) {
+		$value = (int) $this->config('pk_mybars_current'.$num);
+		$max = (int) $this->config('pk_mybars_max'.$num);
+		$text = (string) $this->config('pk_mybars_title'.$num);
+		$tooltip = $this->config('pk_mybars_tooltip'.$num);
 		if(empty($tooltip)) return $this->html->bar($value, $max, '100%', $text);
 		$positions = array(
 			'left1' => array('my' => 'left center', 'at' => 'right center'),
