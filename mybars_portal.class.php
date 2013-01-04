@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:		2008
- * Date:		$Date: 2012-05-01 13:28:27 +0200 (Di, 01. Mai 2012) $
+ * Date:		$Date$
  * -----------------------------------------------------------------------
- * @author		$Author: hoofy_leon $
+ * @author		$Author$
  * @copyright	2006-2011 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
- * @version		$Rev: 11769 $
+ * @version		$Rev$
  * 
- * $Id: mycontent_portal.class.php 11769 2012-05-01 11:28:27Z hoofy_leon $
+ * $Id$
  */
 
 if ( !defined('EQDKP_INC') ){
