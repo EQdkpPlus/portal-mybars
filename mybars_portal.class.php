@@ -29,7 +29,7 @@ class mybars_portal extends portal_generic {
 	protected $path		= 'mybars';
 	protected $data		= array(
 		'name'			=> 'Custom Bars Module',
-		'version'		=> '1.0',
+		'version'		=> '1.0.1',
 		'author'		=> 'Hoofy',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Output a custom content',
