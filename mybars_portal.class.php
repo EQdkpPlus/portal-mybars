@@ -22,7 +22,7 @@ if ( !defined('EQDKP_INC') ){
 
 class mybars_portal extends portal_generic {
 	public static function __shortcuts() {
-		$shortcuts = array('core', 'config', 'html', 'user');
+		$shortcuts = array('core', 'config', 'html', 'user', 'jquery');
 		return array_merge(parent::$shortcuts, $shortcuts);
 	}
 
@@ -131,7 +131,7 @@ class mybars_portal extends portal_generic {
 			'right' => array('my' => 'right center', 'at' => 'left center'),
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center'),
 		);
-		return $this->html->ToolTip($tooltip, $this->html->bar($value, $max, '100%', $text), '', $positions[$this->position]);
+		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max), '', $positions[$this->position]);
 	}
 }
 if(version_compare(PHP_VERSION, '5.3.0', '<')) registry::add_const('short_mybars_portal', mybars_portal::__shortcuts());
