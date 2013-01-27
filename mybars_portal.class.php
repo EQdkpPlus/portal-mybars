@@ -29,7 +29,7 @@ class mybars_portal extends portal_generic {
 	protected $path		= 'mybars';
 	protected $data		= array(
 		'name'			=> 'Custom Bars Module',
-		'version'		=> '1.0.1',
+		'version'		=> '1.0.2',
 		'author'		=> 'Hoofy',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Output a custom content',
@@ -123,13 +123,14 @@ class mybars_portal extends portal_generic {
 		$max = (int) $this->config('pk_mybars_max'.$num);
 		$text = (string) $this->config('pk_mybars_title'.$num);
 		$tooltip = $this->config('pk_mybars_tooltip'.$num);
-		if(empty($tooltip)) return $this->html->bar($value, $max, '100%', $text);
+		if(empty($tooltip)) return $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max);
+		$name = 'mybar_tt_'.uniqid();
 		$positions = array(
-			'left1' => array('my' => 'left center', 'at' => 'right center'),
-			'left2' => array('my' => 'left center', 'at' => 'right center'),
-			'middle' => array(),
-			'right' => array('my' => 'right center', 'at' => 'left center'),
-			'bottom' => array('my' => 'bottom center', 'at' => 'top center'),
+			'left1' => array('my' => 'left top', 'at' => 'right center', 'name' => $name),
+			'left2' => array('my' => 'left bottom', 'at' => 'right center', 'name' => $name),
+			'middle' => array('name' => $name),
+			'right' => array('my' => 'right center', 'at' => 'left center', 'name' => $name ),
+			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
 		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max), '', $positions[$this->position]);
 	}
