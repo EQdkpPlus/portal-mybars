@@ -137,7 +137,12 @@ class mybars_portal extends portal_generic {
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
 		$arrPosition = (isset($positions[$this->position])) ? $positions[$this->position] : $positions['middle'];
-		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max), '', $arrPosition);
+		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), 0, array(
+			'total' 	=> $max,
+			'completed' => $value,
+			'text'		=> $text.' %progress%',
+			'txtalign'	=> 'center',
+		)), '', $arrPosition);
 	}
 }
 ?>
