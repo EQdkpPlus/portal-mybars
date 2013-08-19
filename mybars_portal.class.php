@@ -136,8 +136,8 @@ class mybars_portal extends portal_generic {
 			'right' => array('my' => 'right center', 'at' => 'left center', 'name' => $name ),
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
-		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max), '', $positions[$this->position]);
+		$arrPosition = (isset($positions[$this->position])) ? $positions[$this->position] : $positions['middle'];
+		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max), '', $arrPosition);
 	}
 }
-if(version_compare(PHP_VERSION, '5.3.0', '<')) registry::add_const('short_mybars_portal', mybars_portal::__shortcuts());
 ?>
