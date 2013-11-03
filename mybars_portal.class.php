@@ -31,6 +31,7 @@ class mybars_portal extends portal_generic {
 		'name'			=> 'Custom Bars Module',
 		'version'		=> '1.0.2',
 		'author'		=> 'Hoofy',
+		'icon'			=> 'fa-bar-chart-o',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Output a custom content',
 	);
@@ -137,12 +138,14 @@ class mybars_portal extends portal_generic {
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
 		$arrPosition = (isset($positions[$this->position])) ? $positions[$this->position] : $positions['middle'];
-		return $this->html->ToolTip($tooltip, $this->jquery->ProgressBar('mybar_'.uniqid(), 0, array(
+		$tooltipopts	= array('label' => $this->jquery->ProgressBar('mybar_'.uniqid(), 0, array(
 			'total' 	=> $max,
 			'completed' => $value,
 			'text'		=> $text.' %progress%',
 			'txtalign'	=> 'center',
-		)), '', $arrPosition);
+		)), 'content' => $tooltip);
+		$tooltipopts	= array_merge($tooltipopts, $arrPosition);
+		return new htooltip('mybars_tt'.$num, $tooltipopts);
 	}
 }
 ?>
