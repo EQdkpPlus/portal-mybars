@@ -123,7 +123,9 @@ class mybars_portal extends portal_generic {
 		$max = (int) $this->config('pk_mybars_max'.$num);
 		$text = (string) $this->config('pk_mybars_title'.$num);
 		$tooltip = $this->config('pk_mybars_tooltip'.$num);
-		if(empty($tooltip)) return $this->jquery->ProgressBar('mybar_'.uniqid(), $value/$max*100, $text.' '.$value.'/'.$max);
+		$barvalue = ($max == 0) ? 0 : $value/$max*100;
+		
+		if(empty($tooltip)) return $this->jquery->ProgressBar('mybar_'.uniqid(), $barvalue, $text.' '.$value.'/'.$max);
 		$name = 'mybar_tt_'.uniqid();
 		$positions = array(
 			'left1' => array('my' => 'left top', 'at' => 'right center', 'name' => $name),
