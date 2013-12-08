@@ -21,14 +21,14 @@ if ( !defined('EQDKP_INC') ){
 }
 
 $lang = array(
-	'mybars'					=> 'Meine Fortschritts-Balken',
-	'mybars_name'				=> 'Eigene Fortschritts-Balken',
-	'mybars_desc'				=> 'Gib einen eigenen Fortschritts-Balken auf der Seite aus',
-	'pk_mybars_title'			=> 'Balken-Text (Balken %d)',
-	'pk_mybars_current'			=> 'aktueller Fortschrittswert (Balken %d)',
-	'pk_mybars_max'				=> 'maximaler Fortschrittswert (Balken %d)',
-	'pk_mybars_tooltip'			=> 'Gib den Inhalt des Tooltips ein (Balken %d)',
-	'pk_mybars_headtext'		=> 'Titel des Moduls',
-	'pk_mybars_bars'			=> 'Anzahl an Balken'
+	'mybars'				=> 'Meine Fortschritts-Balken',
+	'mybars_name'			=> 'Eigene Fortschritts-Balken',
+	'mybars_desc'			=> 'Gib einen eigenen Fortschritts-Balken auf der Seite aus',
+	'mybars_f_title'		=> 'Balken-Text (Balken %d)',
+	'mybars_f_current'		=> 'aktueller Fortschrittswert (Balken %d)',
+	'mybars_f_max'			=> 'maximaler Fortschrittswert (Balken %d)',
+	'mybars_f_tooltip'		=> 'Gib den Inhalt des Tooltips ein (Balken %d)',
+	'mybars_f_headtext'		=> 'Titel des Moduls',
+	'mybars_f_bars'			=> 'Anzahl an Balken'
 );
 ?>

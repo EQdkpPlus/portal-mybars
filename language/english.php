@@ -21,14 +21,14 @@ if ( !defined('EQDKP_INC') ){
 }
 
 $lang = array(
-	'mybars'					=> 'My Progress-Bar',
-	'mybars_name'				=> 'Progress-Bar',
-	'mybars_desc'				=> 'Display your own Progress-Bar on the page',
-	'pk_mybars_title'			=> 'Title of the Progress-Bar (Bar %d)',
-	'pk_mybars_current'			=> 'Current progress (Bar %d)',
-	'pk_mybars_max'				=> 'Maximum progress (Bar %d)',
-	'pk_mybars_tooltip'			=> 'Enter a tooltip for the bar (Bar %d)',
-	'pk_mybars_headtext'		=> 'Title of the module',
-	'pk_mybars_bars'			=> 'Number of bars',
+	'mybars'				=> 'My Progress-Bar',
+	'mybars_name'			=> 'Progress-Bar',
+	'mybars_desc'			=> 'Display your own Progress-Bar on the page',
+	'mybars_f_title'		=> 'Title of the Progress-Bar (Bar %d)',
+	'mybars_f_current'		=> 'Current progress (Bar %d)',
+	'mybars_f_max'			=> 'Maximum progress (Bar %d)',
+	'mybars_f_tooltip'		=> 'Enter a tooltip for the bar (Bar %d)',
+	'mybars_f_headtext'		=> 'Title of the module',
+	'mybars_f_bars'			=> 'Number of bars',
 );
 ?>

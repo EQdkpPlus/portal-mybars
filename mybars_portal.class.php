@@ -21,79 +21,63 @@ if ( !defined('EQDKP_INC') ){
 }
 
 class mybars_portal extends portal_generic {
-	public static function __shortcuts() {
-		$shortcuts = array('core', 'config', 'html', 'user', 'jquery');
-		return array_merge(parent::$shortcuts, $shortcuts);
-	}
 
-	protected $path		= 'mybars';
-	protected $data		= array(
+	protected static $path		= 'mybars';
+	protected static $data		= array(
 		'name'			=> 'Custom Bars Module',
 		'version'		=> '1.0.2',
 		'author'		=> 'Hoofy',
 		'icon'			=> 'fa-bar-chart-o',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Output a custom content',
+		'multiple'		=> true,
+		'lang_prefix'	=> 'mybars_'
 	);
-	protected $positions = array('middle', 'left1', 'left2', 'right', 'bottom');
-	protected $install	= array(
+	protected static $positions = array('middle', 'left1', 'left2', 'right', 'bottom');
+	protected static $install	= array(
 		'autoenable'		=> '0',
 		'defaultposition'	=> 'left',
 		'defaultnumber'		=> '7',
 	);
 	
-	protected $multiple = true;
-	
 	public function get_settings($state) {
 		$settings = array(
-			'pk_mybars_headtext'	=> array(
-				'name'		=> 'pk_mybars_headtext',
-				'language'	=> 'pk_mybars_headtext',
-				'property'	=> 'text',
+			'headtext'	=> array(
+				'title'		=> 'text',
 				'size'		=> 30,
 			),
-			'pk_mybars_bars'	=> array(
-				'name'		=> 'pk_mybars_bars',
-				'language'	=> 'pk_mybars_bars',
-				'property'	=> 'spinner',
+			'bars'	=> array(
+				'title'		=> 'spinner',
 				'min'		=> 1,
 				'size'		=> 6,
 				'change'	=> 'load_settings();',
 			),
 		);
 		$bar_settings = array(
-			'pk_bars_title'	=> array(
-				'name'		=> 'pk_mybars_title',
-				'language'	=> $this->user->lang('pk_mybars_title'),
-				'property'	=> 'text',
+			'title'	=> array(
+				'title'		=> 'text',
 				'no_lang'	=> true,
 				'size'		=> 30,
 			),
-			'pk_bars_current'	=> array(
-				'name'		=> 'pk_mybars_current',
-				'language'	=> $this->user->lang('pk_mybars_current'),
-				'property'	=> 'spinner',
+			'current'	=> array(
+				'title'		=> 'spinner',
 				'no_lang'	=> true,
 				'size'		=> 6,
 			),
-			'pk_bars_max'	=> array(
-				'name'		=> 'pk_mybars_max',
-				'language'	=> $this->user->lang('pk_mybars_max'),
-				'property'	=> 'spinner',
+			'max'	=> array(
+				'title'		=> 'spinner',
 				'no_lang'	=> true,
 				'size'		=> 6,
 			),
-			'pk_bars_tooltip'	=> array(
-				'name'		=> 'pk_mybars_tooltip',
-				'language'	=> $this->user->lang('pk_mybars_tooltip'),
-				'property'	=> 'textarea',
+			'tooltip'	=> array(
+				'title'		=> 'textarea',
 				'cols'		=> '40',
 				'rows'		=> '8',
 				'no_lang'	=> true,
 				'codeinput' => true
 			),	
 		);
-		$maxbars = ($this->config('pk_mybars_bars')) ? $this->config('pk_mybars_bars') : 1;
+		$maxbars = ($this->config('bars')) ? $this->config('bars') : 1;
 		for($i=1;$i<=$maxbars;$i++) {
 			foreach($bar_settings as $key => $data) {
 				$settings[$key.$i] = $data;
@@ -105,10 +89,10 @@ class mybars_portal extends portal_generic {
 	}
 
 	public function output() {
-		if($this->config('pk_mybars_headtext')){
-			$this->header = sanitize($this->config('pk_mybars_headtext'));
+		if($this->config('headtext')){
+			$this->header = sanitize($this->config('headtext'));
 		}
-		$maxbars = ($this->config('pk_mybars_bars')) ? $this->config('pk_mybars_bars') : 1;
+		$maxbars = ($this->config('bars')) ? $this->config('bars') : 1;
 		if($maxbars > 1) {
 			$out = '';
 			for($i=1;$i<=$maxbars;$i++) {
@@ -120,10 +104,10 @@ class mybars_portal extends portal_generic {
 	}
 
 	public function bar_out($num=1) {
-		$value = (int) $this->config('pk_mybars_current'.$num);
-		$max = (int) $this->config('pk_mybars_max'.$num);
-		$text = (string) $this->config('pk_mybars_title'.$num);
-		$tooltip = $this->config('pk_mybars_tooltip'.$num);
+		$value = (int) $this->config('current'.$num);
+		$max = (int) $this->config('max'.$num);
+		$text = (string) $this->config('title'.$num);
+		$tooltip = $this->config('tooltip'.$num);
 		if(empty($tooltip)) return $this->jquery->ProgressBar('mybar_'.uniqid(), 0, array(
 			'total' 	=> $max,
 			'completed' => $value,
