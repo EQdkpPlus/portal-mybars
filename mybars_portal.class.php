@@ -50,30 +50,26 @@ class mybars_portal extends portal_generic {
 				'type'		=> 'spinner',
 				'min'		=> 1,
 				'size'		=> 6,
-				'change'	=> 'load_settings();',
+				'class'		=> 'js_reload',
 			),
 		);
 		$bar_settings = array(
 			'title'	=> array(
 				'type'		=> 'text',
-				'no_lang'	=> true,
 				'size'		=> 30,
 			),
 			'current'	=> array(
 				'type'		=> 'spinner',
-				'no_lang'	=> true,
 				'size'		=> 6,
 			),
 			'max'	=> array(
 				'type'		=> 'spinner',
-				'no_lang'	=> true,
 				'size'		=> 6,
 			),
 			'tooltip'	=> array(
 				'type'		=> 'textarea',
 				'cols'		=> '40',
 				'rows'		=> '8',
-				'no_lang'	=> true,
 				'codeinput' => true
 			),	
 		);
