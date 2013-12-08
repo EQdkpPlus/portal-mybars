@@ -77,8 +77,7 @@ class mybars_portal extends portal_generic {
 		for($i=1;$i<=$maxbars;$i++) {
 			foreach($bar_settings as $key => $data) {
 				$settings[$key.$i] = $data;
-				$settings[$key.$i]['name'] .= $i;
-				$settings[$key.$i]['language'] = sprintf($settings[$key.$i]['language'], $i);
+				$settings[$key.$i]['dir_lang'] = sprintf($this->user->lang(static::$data['lang_prefix'].'f_'.$key), $i);
 			}
 		}
 		return $settings;
