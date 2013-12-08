@@ -43,11 +43,11 @@ class mybars_portal extends portal_generic {
 	public function get_settings($state) {
 		$settings = array(
 			'headtext'	=> array(
-				'title'		=> 'text',
+				'type'		=> 'text',
 				'size'		=> 30,
 			),
 			'bars'	=> array(
-				'title'		=> 'spinner',
+				'type'		=> 'spinner',
 				'min'		=> 1,
 				'size'		=> 6,
 				'change'	=> 'load_settings();',
@@ -55,22 +55,22 @@ class mybars_portal extends portal_generic {
 		);
 		$bar_settings = array(
 			'title'	=> array(
-				'title'		=> 'text',
+				'type'		=> 'text',
 				'no_lang'	=> true,
 				'size'		=> 30,
 			),
 			'current'	=> array(
-				'title'		=> 'spinner',
+				'type'		=> 'spinner',
 				'no_lang'	=> true,
 				'size'		=> 6,
 			),
 			'max'	=> array(
-				'title'		=> 'spinner',
+				'type'		=> 'spinner',
 				'no_lang'	=> true,
 				'size'		=> 6,
 			),
 			'tooltip'	=> array(
-				'title'		=> 'textarea',
+				'type'		=> 'textarea',
 				'cols'		=> '40',
 				'rows'		=> '8',
 				'no_lang'	=> true,
