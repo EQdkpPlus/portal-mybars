@@ -42,10 +42,6 @@ class mybars_portal extends portal_generic {
 	
 	public function get_settings($state) {
 		$settings = array(
-			'headtext'	=> array(
-				'type'		=> 'text',
-				'size'		=> 30,
-			),
 			'bars'	=> array(
 				'type'		=> 'spinner',
 				'min'		=> 1,
@@ -84,9 +80,6 @@ class mybars_portal extends portal_generic {
 	}
 
 	public function output() {
-		if($this->config('headtext')){
-			$this->header = sanitize($this->config('headtext'));
-		}
 		$maxbars = ($this->config('bars')) ? $this->config('bars') : 1;
 		if($maxbars > 1) {
 			$out = '';
