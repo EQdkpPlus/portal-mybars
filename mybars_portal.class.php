@@ -40,6 +40,8 @@ class mybars_portal extends portal_generic {
 		'defaultnumber'		=> '7',
 	);
 	
+	protected static $apiLevel = 20;
+	
 	public function get_settings($state) {
 		$settings = array(
 			'bars'	=> array(
