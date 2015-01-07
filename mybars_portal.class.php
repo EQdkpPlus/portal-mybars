@@ -28,7 +28,7 @@ class mybars_portal extends portal_generic {
 	protected static $path		= 'mybars';
 	protected static $data		= array(
 		'name'			=> 'Custom Bars Module',
-		'version'		=> '1.0.2',
+		'version'		=> '2.0.0',
 		'author'		=> 'Hoofy',
 		'icon'			=> 'fa-bar-chart-o',
 		'contact'		=> EQDKP_PROJECT_URL,
