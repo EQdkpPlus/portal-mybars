@@ -28,7 +28,7 @@ class mybars_portal extends portal_generic {
 	protected static $path		= 'mybars';
 	protected static $data		= array(
 		'name'			=> 'Custom Bars Module',
-		'version'		=> '2.0.0',
+		'version'		=> '2.0.1',
 		'author'		=> 'Hoofy',
 		'icon'			=> 'fa-bar-chart-o',
 		'contact'		=> EQDKP_PROJECT_URL,
@@ -90,7 +90,6 @@ class mybars_portal extends portal_generic {
 			$out = '';
 			for($i=1;$i<=$maxbars;$i++) {
 				$out .= $this->bar_out($i);
-				//usleep(3);
 			}
 			return $out;
 		}
@@ -102,13 +101,16 @@ class mybars_portal extends portal_generic {
 		$max = (int) $this->config('max'.$num);
 		$text = (string) $this->config('title'.$num);
 		$tooltip = $this->config('tooltip'.$num);
-		if(empty($tooltip)) return $this->jquery->ProgressBar('mybar_'.unique_id(), 0, array(
+		
+		$barname = 'mybar_'.$this->id.'_'.random_string(false, 7);
+		
+		if(empty($tooltip)) return $this->jquery->ProgressBar($barname, 0, array(
 			'total' 	=> $max,
 			'completed' => $value,
 			'text'		=> $text.' %progress%',
 			'txtalign'	=> 'center',
 		));
-		$name = 'mybar_tt_'.unique_id();
+		$name = 'mybar_tt_'.$this->id.'_'.random_string(false, 7);
 		$positions = array(
 			'left' => array('my' => 'left top', 'at' => 'right center', 'name' => $name),
 			'middle' => array('name' => $name),
@@ -116,14 +118,14 @@ class mybars_portal extends portal_generic {
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
 		$arrPosition = (isset($positions[$this->position])) ? $positions[$this->position] : $positions['middle'];
-		$tooltipopts	= array('label' => $this->jquery->ProgressBar('mybar_'.unique_id(), 0, array(
+		$tooltipopts	= array('label' => $this->jquery->ProgressBar($barname, 0, array(
 			'total' 	=> $max,
 			'completed' => $value,
 			'text'		=> $text.' %progress%',
 			'txtalign'	=> 'center',
-		)), 'content' => $tooltip);
+		)), 'content'	=> $tooltip);
 		$tooltipopts	= array_merge($tooltipopts, $arrPosition);
-		return new htooltip('mybars_tt'.$num, $tooltipopts);
+		return new htooltip('mybars_tt_'.$this->id.'_'.$num, $tooltipopts);
 	}
 }
 ?>
