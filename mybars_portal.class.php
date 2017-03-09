@@ -125,7 +125,7 @@ class mybars_portal extends portal_generic {
 			'txtalign'	=> 'center',
 		)), 'content'	=> $tooltip);
 		$tooltipopts	= array_merge($tooltipopts, $arrPosition);
-		return new htooltip('mybars_tt_'.$this->id.'_'.$num, $tooltipopts);
+		return (new htooltip('mybars_tt_'.$this->id.'_'.$num, $tooltipopts))->output();
 	}
 }
 ?>
