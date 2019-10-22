@@ -28,7 +28,7 @@ class mybars_portal extends portal_generic {
 	protected static $path		= 'mybars';
 	protected static $data		= array(
 		'name'			=> 'Custom Bars Module',
-		'version'		=> '2.0.2',
+		'version'		=> '2.0.3',
 		'author'		=> 'Hoofy',
 		'icon'			=> 'fa-bar-chart-o',
 		'contact'		=> EQDKP_PROJECT_URL,
@@ -102,7 +102,7 @@ class mybars_portal extends portal_generic {
 		$text = (string) $this->config('title'.$num);
 		$tooltip = $this->config('tooltip'.$num);
 		
-		$barname = 'mybar_'.$this->id.'_'.random_string(false, 7);
+		$barname = 'mybar_'.$this->id.'_'.random_string(7);
 		
 		if(empty($tooltip)) return $this->jquery->ProgressBar($barname, 0, array(
 			'total' 	=> $max,
@@ -110,13 +110,14 @@ class mybars_portal extends portal_generic {
 			'text'		=> $text.' %progress%',
 			'txtalign'	=> 'center',
 		));
-		$name = 'mybar_tt_'.$this->id.'_'.random_string(false, 7);
+		$name = 'mybar_tt_'.$this->id.'_'.random_string(7);
 		$positions = array(
 			'left' => array('my' => 'left top', 'at' => 'right center', 'name' => $name),
 			'middle' => array('name' => $name),
 			'right' => array('my' => 'right center', 'at' => 'left center', 'name' => $name ),
 			'bottom' => array('my' => 'bottom center', 'at' => 'top center', 'name' => $name ),
 		);
+
 		$arrPosition = (isset($positions[$this->position])) ? $positions[$this->position] : $positions['middle'];
 		$tooltipopts	= array('label' => $this->jquery->ProgressBar($barname, 0, array(
 			'total' 	=> $max,
@@ -125,6 +126,8 @@ class mybars_portal extends portal_generic {
 			'txtalign'	=> 'center',
 		)), 'content'	=> $tooltip);
 		$tooltipopts	= array_merge($tooltipopts, $arrPosition);
+
+		
 		return (new htooltip('mybars_tt_'.$this->id.'_'.$num, $tooltipopts))->output();
 	}
 }
